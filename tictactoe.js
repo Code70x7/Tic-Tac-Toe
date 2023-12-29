@@ -26,7 +26,31 @@ function setGame() {
             if (c == 0 || c == 1) {
                 tile.classList.add("vertical-line");
             }
+            tile.addEventListener("click", setTile);
             document.getElementById("board").append(tile);
         }
     }
+}
+
+function setTile() {
+    if (gameOver) {
+        return;
+    }
+    let coords = this.id.split("-") //"1-1" -> ["1", "1"]
+    let r = parseInt(coords[0]);
+    let c = parseInt(coords[1]);
+
+    if (board[r][c] != ' ') {
+        return;
+    }
+
+    board[r][c] = currPlayer;
+    this.innerText = currPlayer;
+
+    if (currPlayer == playerO) {
+        currPlayer = playerX;
+    } else {
+        currPlayer = playerO;
+    }
+
 }
