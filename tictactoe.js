@@ -39,9 +39,11 @@ function setTile() {
     let coords = this.id.split("-")
     let r = parseInt(coords[0]);
     let c = parseInt(coords[1]);
-    if (board[r][c] != ' ') {
+
+    if (board[r][c].trim() != '') {
         return;
     }
+
 
     board[r][c] = currPlayer;
     this.innerText = currPlayer;
@@ -51,9 +53,10 @@ function setTile() {
     } else {
         currPlayer = playerO;
     }
-    checkWinner();
+
+    // checkWinner();
 }
-function checkWinner() {
+/*function checkWinner() {
     for (let r = 0; r < 3; r++) {
         if (board[r][0] == board[r][1] && board[r][1] == board[r][2] && board[r][0] != ' ') {
             for (let i = 0; i < 3; i++) {
@@ -99,5 +102,4 @@ function checkWinner() {
         return;
 
     }
-
-}
+}*/
